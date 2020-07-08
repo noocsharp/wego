@@ -75,12 +75,12 @@ func (c *nwsConfig) fetchGrid(lat float32, lon float32) (*nwsGrid, error) {
 		return nil, fmt.Errorf("Unable to read response, %v", err)
 	}
 
-	var parsed map[string]interface{}
+	var parsed map[string]nwsGrid
 	if err = json.Unmarshal(body, &parsed); err != nil {
 		return nil, fmt.Errorf("Unable to unmarshal response (%s): %v\nThe json body is: %s", url, err, string(body))
 	}
 
-	gridData := parsed["properties"].(nwsGrid)
+	gridData := parsed["properties"]
 
 	return &gridData, nil
 }
