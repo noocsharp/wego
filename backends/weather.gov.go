@@ -111,6 +111,7 @@ func (c *nwsConfig) fetchForecast(grid *nwsGrid) ([]nwsResponse, error) {
 	}
 
 	forecastData := parsed["properties"].([]nwsResponse)
+    print(forecastData)
 
 	return forecastData, nil
 }
